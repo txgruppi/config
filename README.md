@@ -1,3 +1,7 @@
+![Codeship](https://img.shields.io/codeship/55287ea0-85e7-0137-8460-5ef343a80245.svg?style=flat-square)
+[![Codecov](https://img.shields.io/codecov/c/github/txgruppi/config.svg?style=flat-square)](https://codecov.io/github/txgruppi/run)
+[![Go Report Card](https://img.shields.io/badge/go_report-A+-brightgreen.svg?style=flat-square)](https://goreportcard.com/report/github.com/txgruppi/config)
+
 # config
 
 Quick and easy way to load config files based on a simple set of rules.
