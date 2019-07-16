@@ -18,18 +18,18 @@ type config struct {
 	HTTPServer server `json:"server"`
 }
 
-func TestLoader(t *testing.T) {
+func TestParser(t *testing.T) {
 	t.Run("NewParser()", func(t *testing.T) {
 		parser := json.NewParser()
 		assert.NotNil(t, parser)
 	})
 
-	t.Run("Loader.Exts()", func(t *testing.T) {
+	t.Run("Parser.Exts()", func(t *testing.T) {
 		parser := json.NewParser()
 		assert.Equal(t, []string{".json"}, parser.Exts())
 	})
 
-	t.Run("Loader.ParseFile()", func(t *testing.T) {
+	t.Run("Parser.ParseFile()", func(t *testing.T) {
 		cases := []struct {
 			name       string
 			data       []byte
