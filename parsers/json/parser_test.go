@@ -18,7 +18,7 @@ type config struct {
 	HTTPServer server `json:"server"`
 }
 
-func TestParser(t *testing.T) {
+func TestJSONParser(t *testing.T) {
 	t.Run("NewParser()", func(t *testing.T) {
 		parser := json.NewParser()
 		assert.NotNil(t, parser)
