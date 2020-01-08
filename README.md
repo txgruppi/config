@@ -19,11 +19,7 @@ Each parser has a list of supported extensions that will be used to find files t
 
 ### Config folder
 
-By default the code will look for files in `./config`, this can be changed by setting the environment variable `$CONFIG_DIR`.
-
-```
-export CONFIG_DIR=/etc/myapp
-```
+By default the load will try to find the files based on the environment variable name given to it (defaults to `CONFIG_DIR`). If the variable name is empty or the variable value is empty, it will look for files in `./config`.
 
 ### File load order
 

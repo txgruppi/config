@@ -19,14 +19,21 @@ type Loader interface {
 	SupportedExtensions() []string
 	// Load find and loads files into the given data type.
 	Load(v interface{}) (*Info, error)
+	// SetEnvironmentVariableName changes the default `CONFIG_DIR` variable name.
+	// Passing an empty name will disable it
+	SetEnvironmentVariableName(name string)
 }
 
 // NewLoader returns a new Loader instance
 func NewLoader() Loader {
-	return &loader{parsers: map[string]parsers.Parser{}}
+	return &loader{
+		envvar:  "CONFIG_DIR",
+		parsers: map[string]parsers.Parser{},
+	}
 }
 
 type loader struct {
+	envvar  string
 	parsers map[string]parsers.Parser
 }
 
@@ -58,7 +65,7 @@ func (t *loader) SupportedExtensions() []string {
 }
 
 func (t *loader) Load(v interface{}) (*Info, error) {
-	configDir, err := getConfigDir()
+	configDir, err := getConfigDir(t.envvar)
 	if err != nil {
 		return nil, &ErrFailedToLoad{Reason: err}
 	}
@@ -88,4 +95,8 @@ func (t *loader) Load(v interface{}) (*Info, error) {
 	}
 
 	return info, nil
+}
+
+func (t *loader) SetEnvironmentVariableName(name string) {
+	t.envvar = name
 }

@@ -47,10 +47,11 @@ func TestLoader(t *testing.T) {
 	assert.Nil(t, createFile(developmentYml))
 	assert.Nil(t, createFile(localDevelopmentYaml))
 
-	os.Setenv("CONFIG_DIR", tmpDir)
+	os.Setenv("CUSTOM_CONFIG_DIR", tmpDir)
 	os.Setenv("ENV", "development")
 
 	loader := config.NewLoader()
+	loader.SetEnvironmentVariableName("CUSTOM_CONFIG_DIR")
 	assert.NotNil(t, loader)
 
 	p0 := &p{}

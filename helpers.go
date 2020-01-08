@@ -6,8 +6,11 @@ import (
 	"path/filepath"
 )
 
-func getConfigDir() (string, error) {
-	dir := os.Getenv("CONFIG_DIR")
+func getConfigDir(envvar string) (string, error) {
+	var dir string
+	if envvar != "" {
+		dir = os.Getenv(envvar)
+	}
 	if dir == "" {
 		dir = "./config"
 	}
